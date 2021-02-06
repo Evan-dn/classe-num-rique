@@ -8,10 +8,8 @@ import { Route, Router, Switch } from 'react-router-dom';
 import Home from './Pages/Home';
 import AddStudent from './Pages/AddStudent';
 
-import NavbarDrawer from '../src/components/Navbar/NavbarDrawer';
-
 // import Navbar here because i use Link in navbar and must be wrap with router
-// import Navbar from './components/Navbar/Navbar';
+import NavbarDrawer from '../src/components/Navbar/NavbarDrawer';
 
 const routes = [
     {
@@ -24,10 +22,6 @@ const routes = [
       exact: true,
       component: AddStudent
     },
-    {
-        path: '/students/:studentId',
-        exact: true,
-    }
 ]
 
 

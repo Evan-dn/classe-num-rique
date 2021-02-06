@@ -9,14 +9,25 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import Navbar from './Navbar';
 
+// Mui icon
+import GroupIcon from '@material-ui/icons/Group';
+import GroupAddIcon from '@material-ui/icons/GroupAdd';
 
 const useStyles = makeStyles({
+  root: {
+    "& .MuiPaper-root": {
+      backgroundColor: '#404040',
+    },
+    "& .MuiListItemText-primary":{
+      fontFamily: " 'Righteous', cursive",
+      color: '#fff'
+    },
+  },
   list: {
     width: 250,
+    
   },
   fullList: {
     width: 'auto',
@@ -60,16 +71,16 @@ export default function TemporaryDrawer() {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List >
-          <ListItem>
+      <List className={classes.list} >
+          <ListItem >
             <ListItemText primary={'Dashboard'} />
           </ListItem>
       </List>
-      <Divider />
-      <List >
+      <Divider/>
+      <List className={classes.list} >
         {['Classe', 'Ajouter un élève'].map((text, index) => (
           <ListItem onClick={() => goToPage(text)}button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            <ListItemIcon>{index % 2 === 0 ? <GroupIcon style={{color: '#fff'}}/> : <GroupAddIcon style={{color: '#fff'}}/>}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}
@@ -80,7 +91,7 @@ export default function TemporaryDrawer() {
   return (
     <div>
         <Navbar toggleDrawer={toggleDrawer('left', true)}/>
-        <Drawer anchor={'left'} open={state['left']}  onClose={toggleDrawer('left', false)}>
+        <Drawer className={classes.root}  open={state['left']}  onClose={toggleDrawer('left', false)}>
             {list('left')}
         </Drawer>
     </div>
